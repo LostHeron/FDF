@@ -55,5 +55,6 @@ static int	get_pixel_data(t_data *ptr_data)
 		free(ptr_data->ptr_mlx);
 		return (ERROR_MLX);
 	}
+	ptr_data->nb_pixels_tot = ptr_data->bits_pp / 8 * DEF_H * DEF_W;
 	return (0);
 }

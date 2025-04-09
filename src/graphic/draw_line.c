@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:21:51 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/08 18:58:19 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/09 19:00:48 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	draw_line(t_data *ptr_data, t_point start, t_point end)
 {
 	double	a;
 
-	printf("point entre p1 : %i, %i et p2 : %i, %i\n", start.x, start.y, end.x, end.y);
+	printf("start.x = %i, start.y = %i, end.x = %i, end.y = %i\n", start.x, start.y, end.x, end.y);
 	if ((end.x - start.x) == 0)
 	{
 		put_vertical(ptr_data, start, end);
@@ -45,11 +45,11 @@ static void	a_less_than_one(t_data *ptr_data, t_pt start, t_pt end, double a)
 	double	y;
 	double	x;
 
+	x = start.x;
+	y = start.y;
 	if (end.x > start.x)
 	{
-		y = start.y;
-		x = start.x;
-		while (x <= end.x)
+		while (x <= end.x && x < DEFAULT_WIDTH)
 		{
 			put_white(ptr_data, x, y);
 			x += 1;
@@ -58,9 +58,7 @@ static void	a_less_than_one(t_data *ptr_data, t_pt start, t_pt end, double a)
 	}
 	else
 	{
-		y = start.y;
-		x = start.x;
-		while (x >= end.x)
+		while (x >= end.x && x >= 0)
 		{
 			put_white(ptr_data, x, y);
 			x -= 1;
@@ -74,11 +72,11 @@ static void	a_greater_one(t_data *ptr_data, t_pt start, t_pt end, double a)
 	double	x;
 	double	y;
 
+	x = start.x;
+	y = start.y;
 	if (end.y > start.y)
 	{
-		y = start.y;
-		x = start.x;
-		while (y <= end.y)
+		while (y <= end.y && y < DEFAULT_HEIGHT)
 		{
 			put_white(ptr_data, x, y);
 			y += 1;
@@ -87,9 +85,7 @@ static void	a_greater_one(t_data *ptr_data, t_pt start, t_pt end, double a)
 	}
 	else
 	{
-		y = start.y;
-		x = start.x;
-		while (y >= end.y)
+		while (y >= end.y && y >= 0)
 		{
 			put_white(ptr_data, x, y);
 			y -= 1;
@@ -100,10 +96,13 @@ static void	a_greater_one(t_data *ptr_data, t_pt start, t_pt end, double a)
 
 static void	put_white(t_data *ptr_data, int x, int y)
 {
-	ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 0] = (char)255;
-	ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 1] = (char)255;
-	ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 2] = (char)255;
-	ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 3] = (char)255;
+	if (x >= 0 && y >= 0 && x < 1000 && y < 1000)
+	{
+		ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 0] = (char)255;
+		ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 1] = (char)255;
+		ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 2] = (char)255;
+		ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 3] = (char)255;
+	}
 }
 
 static void	put_vertical(t_data *ptr_data, t_point start, t_point end)
