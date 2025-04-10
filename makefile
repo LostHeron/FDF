@@ -39,9 +39,12 @@ OBJ_DIR := .obj/
 OBJ_FILES := $(addprefix $(OBJ_DIR),$(C_FILES:.c=.o))
 D_FILES := $(OBJ_FILES:.o=.d)
 
-.PHONY: all makelibft makeminilibx clean fclean re
+.PHONY: all git makelibft makeminilibx clean fclean re
 
 all: makelibft makeminilibx $(NAME)
+
+git:
+	git submodule update --init --remote --recursive
 
 makelibft:
 	$(MAKE) -C $(LIBFT_DIR)

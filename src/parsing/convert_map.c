@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   convert_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 15:35:06 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/10 17:37:00 by jweber           ###   ########.fr       */
+/*   Created: 2025/04/10 17:32:04 by jweber            #+#    #+#             */
+/*   Updated: 2025/04/10 18:00:31 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,34 @@
 #include "ft_vectors.h"
 #include "parsing.h"
 
-static void	print_map(t_data *ptr_data);
+static void	my_free(t_vector *ptr_vec);
 
-int	parsing(t_data *ptr_data, char *filename)
+int	convert_map(t_data *ptr_data)
 {
-	int	ret;
+	int			ret;
+	t_vector	map_copy;
 
-	ret = read_map(ptr_data, filename);
+	ft_vector_copy(&map_copy, &ptr_data->map);
+	ret = ft_vector_init(&ptr_data->map, map_copy.size, \
+						sizeof(t_vector), &my_free);
 	if (ret != 0)
+	{
+		ft_vector_free(&map_copy);
 		return (ret);
-	print_map(ptr_data);
-	convert_map(ptr_data);
-	ft_vector_free(&ptr_data->map);
+	}
+	fill_new_vec(ptr_data, map_copy);
 	return (0);
 }
 
-#include <stdio.h>
-
-static void	print_map(t_data *ptr_data)
+static void	my_free(t_vector *ptr_vec)
 {
 	size_t	i;
 
 	i = 0;
-	while (i < ptr_data->map.size)
+	while (i < ptr_vec->size)
 	{
-		printf("%s\n", ((char **)ptr_data->map.data)[i]);
+		ft_vector_free(((t_vector *)ptr_vec->data) + i);
 		i++;
 	}
+	free(ptr_vec->data);
 }
