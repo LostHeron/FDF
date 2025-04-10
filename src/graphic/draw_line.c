@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:21:51 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/09 19:00:48 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/10 15:16:13 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,10 @@ static void	put_white(t_data *ptr_data, int x, int y);
 static void	a_less_than_one(t_data *ptr_data, t_pt start, t_pt end, double a);
 static void	a_greater_one(t_data *ptr_data, t_pt start, t_pt end, double a);
 
-#include <stdio.h>
 void	draw_line(t_data *ptr_data, t_point start, t_point end)
 {
 	double	a;
 
-	printf("start.x = %i, start.y = %i, end.x = %i, end.y = %i\n", start.x, start.y, end.x, end.y);
 	if ((end.x - start.x) == 0)
 	{
 		put_vertical(ptr_data, start, end);

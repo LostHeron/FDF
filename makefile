@@ -11,6 +11,13 @@ MINILIBX := $(MINILIBX_DIR)libmlx_Linux.a $(MINILIBX_DIR)libmlx.a
 INCLUDES := -I $(LIBFT_DIR)includes/ -I includes/ -I $(MINILIBX_DIR)
 LIBRARIES := -L $(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 
+PARSING_DIR := src/parsing/
+PARSING_FILES := parsing.c \
+				 read_map.c \
+
+PRINTING_DIR := src/printing/
+PRINTING_FILES := print_error.c \
+
 GRAPHIC_DIR := src/graphic/
 GRAPHIC_FILES := graphic.c \
 				 init_mlx_data.c \
@@ -24,6 +31,8 @@ GRAPHIC_FILES := graphic.c \
 
 C_FILES := fdf.c \
 		   $(addprefix $(GRAPHIC_DIR), $(GRAPHIC_FILES)) \
+		   $(addprefix $(PARSING_DIR), $(PARSING_FILES)) \
+		   $(addprefix $(PRINTING_DIR), $(PRINTING_FILES)) \
 
 OBJ_DIR_DEBUG := .obj_debug/
 OBJ_DIR := .obj/
@@ -45,10 +54,16 @@ $(NAME): $(OBJ_FILES) $(LIBFT) $(MINILIBX)
 
 -include $(D_FILES)
 
-$(OBJ_DIR)%.o:%.c | $(OBJ_DIR)$(GRAPHIC_DIR)
+$(OBJ_DIR)%.o:%.c | $(OBJ_DIR)$(GRAPHIC_DIR) $(OBJ_DIR)$(PARSING_DIR) $(OBJ_DIR)$(PRINTING_DIR)
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 	
 $(OBJ_DIR)$(GRAPHIC_DIR):
+	mkdir -p $@
+
+$(OBJ_DIR)$(PARSING_DIR):
+	mkdir -p $@
+
+$(OBJ_DIR)$(PRINTING_DIR):
 	mkdir -p $@
 
 clean:

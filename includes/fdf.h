@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:35:49 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/09 18:49:53 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/10 17:19:33 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,13 @@
 
 # include "ft_vectors.h"
 
+# define SUCCESS 0
 # define ERROR_READ -1
 # define ERROR_OPEN -2
 # define ERROR_MALLOC -3
 # define ERROR_MLX -9
+# define ERROR_NB_ARGUMENTS -10
+# define ERROR_MAP_EXTENTION -11
 
 # define DEFAULT_WIDTH 1000
 # define DEFAULT_HEIGHT 1000
@@ -31,9 +34,9 @@
 
 typedef struct s_point
 {
-	int	x;
-	int	y;
-	int	z;
+	double	x;
+	double	y;
+	double	z;
 }			t_point;
 
 typedef t_point	t_pt;
