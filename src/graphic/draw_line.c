@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 17:21:51 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/10 15:16:13 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/14 15:39:10 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ static void	a_greater_one(t_data *ptr_data, t_pt start, t_pt end, double a)
 
 static void	put_white(t_data *ptr_data, int x, int y)
 {
-	if (x >= 0 && y >= 0 && x < 1000 && y < 1000)
+	if (x >= 0 && y >= 0 && x < DEFAULT_WIDTH && y < DEFAULT_HEIGHT)
 	{
 		ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 0] = (char)255;
 		ptr_data->pixels_data[y * ptr_data->bytes_pl + x * 4 + 1] = (char)255;

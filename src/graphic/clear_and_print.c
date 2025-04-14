@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modify_rot.c                                       :+:      :+:    :+:   */
+/*   clear_and_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 18:49:08 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 18:58:56 by jweber           ###   ########.fr       */
+/*   Created: 2025/04/14 15:58:23 by jweber            #+#    #+#             */
+/*   Updated: 2025/04/14 16:04:46 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "graphic.h"
+#include "mlx.h"
 
-void	modify_rot_x(t_data *ptr_data)
+void	clear_and_print(t_data *ptr_data)
 {
-	ptr_data->angle_x += PI_OVER_16;
-	set_rot_x(ptr_data);
-}
-
-void	modify_rot_y(t_data *ptr_data)
-{
-	ptr_data->angle_y += PI_OVER_16;
-	set_rot_y(ptr_data);
-}
-
-void	modify_rot_z(t_data *ptr_data)
-{
-	ptr_data->angle_z += PI_OVER_16;
-	set_rot_z(ptr_data);
+	clear_image(ptr_data);
+	calc_points(ptr_data);
+	draw_points(ptr_data);
+	mlx_put_image_to_window(ptr_data->ptr_mlx, ptr_data->ptr_win, \
+						ptr_data->ptr_img, 0, 0);
 }

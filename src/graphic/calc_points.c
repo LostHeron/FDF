@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:36:22 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 11:47:04 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/14 18:11:35 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,13 @@ static void	init_points_calc(t_data *ptr_data)
 		x_i = 0;
 		while (x_i < ((t_vector *)ptr_data->map.data)[y_i].size)
 		{
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].x = \
-				((t_point *)((t_vector *)ptr_data->map.data)[x_i].data)[y_i].x;
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].y = \
-				((t_point *)((t_vector *)ptr_data->map.data)[x_i].data)[y_i].y;
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].z = \
-				((t_point *)((t_vector *)ptr_data->map.data)[x_i].data)[y_i].z;
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].x = \
+		((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].x;
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y = \
+		((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].y;
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z = \
+		((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].z * \
+				ptr_data->height_factor;
 			x_i++;
 		}
 		y_i++;
@@ -74,27 +75,27 @@ static void	calc_new_val(size_t	x_i, size_t y_i,
 	double	tmp_y;
 	double	tmp_z;
 
-	tmp_x = ((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].x \
+	tmp_x = ((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].x \
 			* rot[0][0] + \
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].y \
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y \
 			* rot[0][1] + \
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].z \
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z \
 			* rot[0][2];
-	tmp_y = ((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].x \
+	tmp_y = ((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].x \
 			* rot[1][0] + \
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].y \
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y \
 			* rot[1][1] + \
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].z \
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z \
 			* rot[1][2];
-	tmp_z = ((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].x \
+	tmp_z = ((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].x \
 			* rot[2][0] + \
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].y \
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y \
 			* rot[2][1] + \
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].z \
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z \
 			* rot[2][2];
-	((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].x = tmp_x;
-	((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].y = tmp_y;
-	((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].z = tmp_z;
+	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].x = tmp_x;
+	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y = tmp_y;
+	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z = tmp_z;
 }
 
 static void	resize_points_calc(t_data *ptr_data)
@@ -108,15 +109,17 @@ static void	resize_points_calc(t_data *ptr_data)
 		x_i = -1;
 		while (++x_i < ((t_vector *)ptr_data->map_c.data)[y_i].size)
 		{
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].x = \
-	((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].x * 375 \
-				+ 562;
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].y = \
-	((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].y * 375 \
-				+ 562;
-			((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].z = \
-	((t_point *)((t_vector *)ptr_data->map_c.data)[x_i].data)[y_i].z * 375 \
-				+ 562;
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].x = \
+	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].x * \
+				ptr_data->default_scale_factor * \
+				ptr_data->zoom_factor + ptr_data->trans_x;
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y = \
+	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y * \
+				ptr_data->default_scale_factor * \
+				ptr_data->zoom_factor + ptr_data->trans_y;
+			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z = \
+	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z * 40 * \
+				ptr_data->zoom_factor + 562;
 		}
 	}
 }

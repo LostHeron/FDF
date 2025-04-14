@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:35:49 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 10:22:48 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/14 18:52:08 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,14 @@
 # define ERROR_NB_ARGUMENTS -10
 # define ERROR_MAP_EXTENTION -11
 
-# define DEFAULT_WIDTH 1000
-# define DEFAULT_HEIGHT 1000
+# define DEFAULT_WIDTH 2000 
+# define DEFAULT_HEIGHT 500
 # define DEF_W DEFAULT_WIDTH
 # define DEF_H DEFAULT_HEIGHT
 
 # define ESC 65307
 
+# define PI 3.14159265358979323846
 # define PI_OVER_8 0.39269908169
 
 typedef struct s_point
@@ -59,6 +60,11 @@ typedef struct s_data
 	double		angle_y;
 	double		rot_z[3][3];
 	double		angle_z;
+	double		zoom_factor;
+	double		height_factor;
+	double		default_scale_factor;
+	double		trans_x;
+	double		trans_y;
 	t_point		points_init[3][3];
 	t_point		points_calc[3][3];
 	int			nb_pixels_tot;

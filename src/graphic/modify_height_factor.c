@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modify_rot.c                                       :+:      :+:    :+:   */
+/*   modify_height_factor.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 18:49:08 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 18:58:56 by jweber           ###   ########.fr       */
+/*   Created: 2025/04/14 14:30:24 by jweber            #+#    #+#             */
+/*   Updated: 2025/04/14 18:20:46 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "graphic.h"
+#include "ft_math.h"
 
-void	modify_rot_x(t_data *ptr_data)
+void	modify_height_factor_down(t_data *ptr_data)
 {
-	ptr_data->angle_x += PI_OVER_16;
-	set_rot_x(ptr_data);
+	if (ft_abs(ptr_data->height_factor) > 0.10001 )
+		ptr_data->height_factor -= 0.1;
+	else
+		ptr_data->height_factor -= 0.01;
 }
 
-void	modify_rot_y(t_data *ptr_data)
+void	modify_height_factor_up(t_data *ptr_data)
 {
-	ptr_data->angle_y += PI_OVER_16;
-	set_rot_y(ptr_data);
-}
-
-void	modify_rot_z(t_data *ptr_data)
-{
-	ptr_data->angle_z += PI_OVER_16;
-	set_rot_z(ptr_data);
+	if (ft_abs(ptr_data->height_factor) < 0.101)
+		ptr_data->height_factor += 0.01;
+	else
+		ptr_data->height_factor += 0.1;
 }

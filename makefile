@@ -32,7 +32,11 @@ GRAPHIC_FILES := graphic.c \
 				 key_hooks.c \
 				 set_rotations.c \
 				 modify_rot.c \
+				 modify_height_factor.c \
+				 modify_zoom_factor.c \
 				 calc_points.c \
+				 clear_and_print.c \
+				 get_scale_factor.c \
 
 C_FILES := fdf.c \
 		   $(addprefix $(GRAPHIC_DIR), $(GRAPHIC_FILES)) \

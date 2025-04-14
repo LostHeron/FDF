@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modify_rot.c                                       :+:      :+:    :+:   */
+/*   modify_zoom_factor.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/09 18:49:08 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 18:58:56 by jweber           ###   ########.fr       */
+/*   Created: 2025/04/14 14:19:01 by jweber            #+#    #+#             */
+/*   Updated: 2025/04/14 15:16:48 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "graphic.h"
 
-void	modify_rot_x(t_data *ptr_data)
+void	zoom_in(t_data *ptr_data)
 {
-	ptr_data->angle_x += PI_OVER_16;
-	set_rot_x(ptr_data);
+	ptr_data->zoom_factor += 0.1;
 }
 
-void	modify_rot_y(t_data *ptr_data)
+void	zoom_out(t_data *ptr_data)
 {
-	ptr_data->angle_y += PI_OVER_16;
-	set_rot_y(ptr_data);
-}
-
-void	modify_rot_z(t_data *ptr_data)
-{
-	ptr_data->angle_z += PI_OVER_16;
-	set_rot_z(ptr_data);
+	if (ptr_data->zoom_factor > 0.12)
+		ptr_data->zoom_factor -= 0.1;
+	else if (ptr_data->zoom_factor > 0.012)
+		ptr_data->zoom_factor -= 0.01;
 }
