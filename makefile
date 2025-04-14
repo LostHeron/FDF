@@ -14,6 +14,11 @@ LIBRARIES := -L $(MINILIBX_DIR) -lmlx -lX11 -lXext -lm
 PARSING_DIR := src/parsing/
 PARSING_FILES := parsing.c \
 				 read_map.c \
+				 convert_map.c \
+				 fill_new_vec.c \
+				 fill_vec_tmp.c \
+				 convert_points_coo.c \
+				 copy_map_vec.c \
 
 PRINTING_DIR := src/printing/
 PRINTING_FILES := print_error.c \

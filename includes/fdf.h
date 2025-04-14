@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:35:49 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/10 17:19:33 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/14 10:22:48 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 # define ESC 65307
 
-#define PI_OVER_8 0.39269908169
+# define PI_OVER_8 0.39269908169
 
 typedef struct s_point
 {
@@ -48,6 +48,7 @@ typedef t_point	t_pt;
 typedef struct s_data
 {
 	t_vector	map;
+	t_vector	map_c;
 	void		*ptr_mlx;
 	void		*ptr_win;
 	void		*ptr_img;

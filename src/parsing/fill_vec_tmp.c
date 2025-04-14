@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   fill_vec_tmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 15:37:01 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 11:19:19 by jweber           ###   ########.fr       */
+/*   Created: 2025/04/14 08:48:36 by jweber            #+#    #+#             */
+/*   Updated: 2025/04/14 09:01:22 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "fdf.h"
+#include "ft_vectors.h"
+#include "ft_standard.h"
 
-# include "fdf.h"
+int	fill_vec_tmp(int line_i, t_vector *vec_tmp, char **split_tmp)
+{
+	int		i;
+	t_point	val;
+	int		ret;
 
-int	parsing(t_data *ptr_data, char *filename);
-int	read_map(t_data *ptr_data, char *filename);
-int	convert_map(t_data *ptr_data);
-int	fill_new_vec(t_data *ptr_data, t_vector map_copy);
-int	fill_vec_tmp(int line_i, t_vector *vec_tmp, char **split_tmp);
-int	convert_points_coo(t_data *ptr_data);
-int	copy_map_vec(t_data *ptr_data);
-
-#endif
+	i = 0;
+	while (split_tmp[i] != NULL)
+	{
+		val.x = i;
+		val.y = line_i;
+		val.z = ft_atoi(split_tmp[i]);
+		ret = ft_vector_add_single(vec_tmp, &val);
+		if (ret != 0)
+			return (ret);
+		i++;
+	}
+	return (0);
+}

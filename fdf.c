@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:22:23 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/10 17:20:10 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/14 11:23:41 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 	if (ret != 0)
 		return (print_err_return(ret, 1));
 	ret = graphic(&data);
+	ft_vector_free(&data.map);
+	ft_vector_free(&data.map_c);
 	return (ret);
 }
 
