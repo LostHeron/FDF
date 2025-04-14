@@ -6,32 +6,41 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:01:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/10 15:12:33 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/14 11:56:54 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "graphic.h"
 
+static void	call_draw_func(size_t x_i, size_t y_i, t_data *ptr_data);
+
 void	draw_points(t_data *ptr_data)
 {
-	int	i;
-	int	j;
+	size_t	x_i;
+	size_t	y_i;
 
-	i = 0;
-	while (i < 3)
+	y_i = 0;
+	while (y_i < ptr_data->map_c.size)
 	{
-		j = 0;
-		while (j < 3)
+		x_i = 0;
+		while (x_i < ((t_vector *)ptr_data->map_c.data)[y_i].size)
 		{
-			if (i < 2)
-				draw_line(ptr_data, ptr_data->points_calc[i][j], \
-					ptr_data->points_calc[i + 1][j]);
-			if (j < 2)
-				draw_line(ptr_data, ptr_data->points_calc[i][j], \
-					ptr_data->points_calc[i][j + 1]);
-			j++;
+			call_draw_func(x_i, y_i, ptr_data);
+			x_i++;
 		}
-		i++;
+		y_i++;
 	}
+}
+
+static void	call_draw_func(size_t x_i, size_t y_i, t_data *ptr_data)
+{
+	if (y_i < ptr_data->map_c.size - 1)
+		draw_line(ptr_data, \
+	((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i], \
+	((t_point *)((t_vector *)ptr_data->map.data)[y_i + 1].data)[x_i]);
+	if (x_i < ((t_vector *)ptr_data->map_c.data)[y_i].size - 1)
+		draw_line(ptr_data, \
+	((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i], \
+	((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i + 1]);
 }
