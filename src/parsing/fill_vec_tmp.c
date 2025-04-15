@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 08:48:36 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 09:01:22 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 17:04:19 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "ft_vectors.h"
 #include "ft_standard.h"
 
+/* check ft_vector_add_single fail : checked */
 int	fill_vec_tmp(int line_i, t_vector *vec_tmp, char **split_tmp)
 {
 	int		i;

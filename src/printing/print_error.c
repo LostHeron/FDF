@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:51:27 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 15:27:58 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:23:06 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	print_error(int err_code)
 		print_error_malloc();
 	if (err_code == ERROR_EMPTY_MAP)
 		print_error_empty_map();
+	if (err_code == ERROR_MLX)
+		print_error_mlx();
 }
 
 static void	print_error_empty_map(void)
@@ -43,7 +45,7 @@ static void	print_error_empty_map(void)
 
 static void	print_error_malloc(void)
 {
-	ft_printf_fd(2, "Error while allocating memory :\n");
+	ft_printf_fd(2, "Error while allocating memory\n");
 }
 
 static void	print_error_nb_args(void)

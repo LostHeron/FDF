@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:35:49 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 10:42:57 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:34:42 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define ERROR_MAP_EXTENTION -11
 # define ERROR_EMPTY_MAP -12
 
-# define DEFAULT_WIDTH 2000 
-# define DEFAULT_HEIGHT 500
+# define DEFAULT_WIDTH 4000
+# define DEFAULT_HEIGHT 4000
 # define DEF_W DEFAULT_WIDTH
 # define DEF_H DEFAULT_HEIGHT
 
@@ -71,7 +71,7 @@ typedef struct s_data
 	double		trans_y;
 	t_point		points_init[3][3];
 	t_point		points_calc[3][3];
-	int			nb_pixels_tot;
+	size_t		nb_pixels_tot;
 	int			bits_pp;
 	int			bytes_pl;
 	int			endian;

@@ -6,13 +6,13 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 09:43:24 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 15:39:51 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 17:07:34 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	convert_points_coo(t_data *ptr_data)
+void	convert_points_coo(t_data *ptr_data)
 {
 	size_t	x_i;
 	size_t	y_i;
@@ -35,5 +35,5 @@ int	convert_points_coo(t_data *ptr_data)
 		}
 		y_i++;
 	}
-	return (0);
+	return ;
 }

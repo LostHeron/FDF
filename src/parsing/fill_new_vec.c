@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 18:01:04 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 09:39:04 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 17:05:41 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ static int	free_and_ret(t_vector *map_copy, \
 	* have a ptr_data->map freed (and / or = NULL)
 	* and freed all memory allocation created in this function !
  */
+
+/* check split fail : checked */
+/* check ft_vector_init fail : checked */
+/* check fill_vec_tmp fail : checked */
+/* ft_vector_add_single fail : checked */
 int	fill_new_vec(t_data *ptr_data, t_vector map_copy)
 {
 	int			ret;
@@ -45,16 +50,16 @@ int	fill_new_vec(t_data *ptr_data, t_vector map_copy)
 	{
 		split_tmp = ft_split(((char **)map_copy.data)[line_i], WHITE_SPACES);
 		if (split_tmp == NULL)
-			return (free_and_ret(&map_copy, &ptr_data->map, NULL, ERR_MALLOC));
+			return (free_and_ret(&map_copy, NULL, NULL, ERR_MALLOC));
 		ret = ft_vector_init(&vec_tmp, 5, sizeof(t_point), &free_vec_pt);
 		if (ret != SUCCESS)
-			return (free_and_ret(&map_copy, &ptr_data->map, split_tmp, ret));
+			return (free_and_ret(&map_copy, NULL, split_tmp, ret));
 		ret = fill_vec_tmp(line_i, &vec_tmp, split_tmp);
 		if (ret != 0)
-			return (free_and_ret(&map_copy, &ptr_data->map, split_tmp, ret));
+			return (free_and_ret(&map_copy, &vec_tmp, split_tmp, ret));
 		ret = ft_vector_add_single(&ptr_data->map, &vec_tmp);
 		if (ret != SUCCESS)
-			return (free_and_ret(&map_copy, &ptr_data->map, split_tmp, ret));
+			return (free_and_ret(&map_copy, &vec_tmp, split_tmp, ret));
 		free_split(split_tmp);
 		line_i++;
 	}
@@ -63,12 +68,12 @@ int	fill_new_vec(t_data *ptr_data, t_vector map_copy)
 }
 
 static int	free_and_ret(t_vector *p_map_copy, \
-						t_vector *p_map, char **split, int ret)
+						t_vector *p_vec_tmp, char **split, int ret)
 {
 	if (p_map_copy != NULL)
 		ft_vector_free(p_map_copy);
-	if (p_map != NULL)
-		ft_vector_free(p_map);
+	if (p_vec_tmp != NULL)
+		ft_vector_free(p_vec_tmp);
 	if (split != NULL)
 		free_split(split);
 	return (ret);

@@ -57,7 +57,11 @@ OBJ_DIR := .obj/
 OBJ_FILES := $(addprefix $(OBJ_DIR),$(C_FILES:.c=.o))
 D_FILES := $(OBJ_FILES:.o=.d)
 
-.PHONY: all git makelibft makeminilibx clean fclean re
+.PHONY: all git makelibft makeminilibx clean fclean re debug debug_clean debug_fclean debug_re
+
+debugrun:
+	$(MAKE) debug
+	valgrind --track-fds=yes -s --leak-check=full ./fdf map/1.fdf
 
 all: makelibft makeminilibx $(NAME)
 
@@ -116,6 +120,3 @@ debug_fclean:
 debug_re:
 	$(MAKE) CFLAGS="$(CFLAGS) -g3" OBJ_DIR="$(OBJ_DIR_DEBUG)" re
 
-debugrun:
-	$(MAKE) debug
-	valgrind --track-fds=yes -s --leak-check=full ./fdf map/1.fdf

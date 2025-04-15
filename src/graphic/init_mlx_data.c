@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 15:26:03 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/08 15:27:08 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:25:59 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 static int	get_pixel_data(t_data *ptr_data);
 
+/* check mlx_init fail : checked */
+/* check mlx_new_window fail : checked */
+/* check mlx_new_image fail : checked */
+/* check get_pixel_data faile : checked */
 int	init_mlx_data(t_data *ptr_data)
 {
 	int	ret;
@@ -43,6 +47,7 @@ int	init_mlx_data(t_data *ptr_data)
 	return (0);
 }
 
+/* check mlx_get_data_add fail : checked */
 static int	get_pixel_data(t_data *ptr_data)
 {
 	ptr_data->pixels_data = mlx_get_data_addr(ptr_data->ptr_img, \

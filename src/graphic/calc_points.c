@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:36:22 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 18:11:35 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:38:26 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,9 +117,11 @@ static void	resize_points_calc(t_data *ptr_data)
 	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y * \
 				ptr_data->default_scale_factor * \
 				ptr_data->zoom_factor + ptr_data->trans_y;
+			/*
 			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z = \
 	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z * 40 * \
 				ptr_data->zoom_factor + 562;
+			*/
 		}
 	}
 }

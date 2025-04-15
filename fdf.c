@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:22:23 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 17:52:39 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:11:01 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 static int	check_args(int argc, char **argv);
 static int	print_err_return(int err_code, int return_val);
 
+/* check check_args fail : checked */
+/* check parsing fail : checked */
+/* check graphic fail : TO DO */
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -33,7 +36,12 @@ int	main(int argc, char **argv)
 	ret = graphic(&data);
 	ft_vector_free(&data.map);
 	ft_vector_free(&data.map_c);
-	return (ret);
+	if (ret != 0)
+	{
+		print_error(ret);
+		return (1);
+	}
+	return (0);
 }
 
 static int	check_args(int argc, char **argv)

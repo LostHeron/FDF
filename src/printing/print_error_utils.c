@@ -6,12 +6,17 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 15:23:21 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 15:25:58 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:22:34 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_io.h"
 #include <stdio.h>
+
+void	print_error_mlx(void)
+{
+	ft_printf_fd(2, "Error from mlx\n");
+}
 
 void	print_error_open(void)
 {

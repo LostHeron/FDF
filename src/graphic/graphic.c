@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:50:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 15:57:04 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:33:01 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	init_factor(t_data *ptr_data);
 static void	free_mlx(t_data *ptr_data);
 static int	no_event(void);
 
+/* check init_mlx_data fail : checked */
 int	graphic(t_data	*ptr_data)
 {
 	int	ret;

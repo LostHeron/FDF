@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 17:32:04 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 09:37:42 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 16:52:06 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,12 @@ int	convert_map(t_data *ptr_data)
 		ft_vector_free(&map_copy);
 		return (ret);
 	}
-	fill_new_vec(ptr_data, map_copy);
+	ret = fill_new_vec(ptr_data, map_copy);
+	if (ret != 0)
+	{
+		ft_vector_free(&ptr_data->map);
+		return (ret);
+	}
 	return (0);
 }
 

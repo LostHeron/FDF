@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:46:57 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 16:35:19 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 18:08:46 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 static int	read_while(t_data *ptr_data, int fd, char *line, int *p_err_code);
 static void	free_first(t_vector *ptr_vec);
 
+/* check ft_vector_init fial : checked */
+/* fail get_next_line : checked ! */
+/* fail ft_vector_add_single : checked ! */
 int	read_map(t_data *ptr_data, char *filename)
 {
 	int		ret;
@@ -47,8 +50,8 @@ int	read_map(t_data *ptr_data, char *filename)
 	return (ret);
 }
 
-/* fail get_next_line : checked ! */
 /* fail ft_vector_add_single : checked ! */
+/* fail get_next_line : checked ! */
 static int	read_while(t_data *ptr_data, int fd, char *line, int *p_err_code)
 {
 	int	ret;
