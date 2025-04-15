@@ -44,7 +44,6 @@ int	graphic(t_data	*ptr_data)
 	return (0);
 }
 
-#include <stdio.h>
 static void	init_factor(t_data *ptr_data)
 {
 	ptr_data->height_factor = 0.1;

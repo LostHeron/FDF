@@ -20,8 +20,6 @@
 
 int	key_press(int keycode, t_data *ptr_data)
 {
-	printf("dans key_press\n");
-	printf("keycode = %i\n", keycode);
 	if (keycode == ESC)
 	{
 		mlx_loop_end(ptr_data->ptr_mlx);
@@ -31,7 +29,6 @@ int	key_press(int keycode, t_data *ptr_data)
 	{
 		ptr_data->hook_func = &key_hook_shift;
 	}
-	printf("avant hook_func\n");
 	ptr_data->hook_func(keycode, ptr_data);
 	return (0);
 }

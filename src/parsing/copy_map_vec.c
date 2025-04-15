@@ -14,6 +14,9 @@
 #include "ft_memory.h"
 #include "ft_vectors.h"
 
+static int	vec_free_and_ret(t_data *ptr_data, int ret);
+static int	my_vec_init(t_vector *ptr_vec, t_data *ptr_data, int i);
+
 /*
  * So idea here :
  * this function should : 
@@ -35,26 +38,34 @@ int	copy_map_vec(t_data *ptr_data)
 	i = 0;
 	while (i < ptr_data->map.size)
 	{
-		ret = ft_vector_init(&vec_tmp, \
-							((t_vector *)ptr_data->map.data)[i].capacity, \
-							((t_vector *)ptr_data->map.data)[i].data_size, \
-							((t_vector *)ptr_data->map.data)[i].del);
+		ret = my_vec_init(&vec_tmp, ptr_data, i);
 		if (ret != 0)
-		{
-			ft_vector_free(&ptr_data->map_c);
-			return (ret);
-		}
+			return (vec_free_and_ret(ptr_data, ret));
 		ft_memcpy(vec_tmp.data, ((t_vector *)ptr_data->map.data)[i].data, \
 			((t_vector *)ptr_data->map.data)[i].data_size * \
 			((t_vector *)ptr_data->map.data)[i].size);
 		vec_tmp.size = ((t_vector *)ptr_data->map.data)[i].size;
 		ret = ft_vector_add_single(&ptr_data->map_c, &vec_tmp);
 		if (ret != 0)
-		{
-			ft_vector_free(&ptr_data->map_c);
-			return (ret);
-		}
+			return (vec_free_and_ret(ptr_data, ret));
 		i++;
 	}
 	return (SUCCESS);
+}
+
+static int	my_vec_init(t_vector *ptr_vec, t_data *ptr_data, int i)
+{
+	int	ret;
+
+	ret = ft_vector_init(ptr_vec, \
+		((t_vector *)ptr_data->map.data)[i].capacity, \
+		((t_vector *)ptr_data->map.data)[i].data_size, \
+		((t_vector *)ptr_data->map.data)[i].del);
+	return (ret);
+}
+
+static int	vec_free_and_ret(t_data *ptr_data, int ret)
+{
+	ft_vector_free(&ptr_data->map_c);
+	return (ret);
 }

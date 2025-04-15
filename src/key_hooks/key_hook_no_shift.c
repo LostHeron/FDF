@@ -17,16 +17,12 @@
 #define XK_MISCELLANY
 #include <X11/keysym.h>
 
-#include <stdio.h>
-
 static int	rotations(int keycode, t_data *ptr_data);
 
 int	key_hook_no_shift(int keycode, t_data *ptr_data)
 {
-	printf("dans key_hook_shift\n");
 	if (keycode == XK_c)
 	{
-		printf("clear win\n");
 		clear_image(ptr_data);
 		mlx_clear_window(ptr_data->ptr_mlx, ptr_data->ptr_win);
 		return (0);

@@ -17,7 +17,6 @@
 
 int	key_release(int keycode, t_data *ptr_data)
 {
-	printf("dans key_release\n");
 	if (keycode == SHIFT)
 	{
 		ptr_data->hook_func = &key_hook_no_shift;
