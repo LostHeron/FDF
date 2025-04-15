@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:35:06 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 14:48:30 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 16:19:37 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	parsing(t_data *ptr_data, char *filename)
 	ret = read_map(ptr_data, filename);
 	if (ret != 0)
 		return (ret);
+	if (ptr_data->map.size == 0)
+	{
+		free(ptr_data->map.data);
+		return (ERROR_EMPTY_MAP);
+	}
 	ret = convert_map(ptr_data);
 	if (ret != 0)
 		return (ret);

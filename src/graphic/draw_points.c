@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:01:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 14:35:47 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 15:42:45 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	draw_points(t_data *ptr_data)
 static void	call_draw_func(size_t x_i, size_t y_i, t_data *ptr_data)
 {
 	if (y_i < ptr_data->map_c.size - 1)
-		draw_line(ptr_data, \
+		if (x_i < ((t_vector *)ptr_data->map_c.data)[y_i + 1].size)
+			draw_line(ptr_data, \
 	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i], \
 	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i + 1].data)[x_i]);
 	if (x_i < ((t_vector *)ptr_data->map_c.data)[y_i].size - 1)

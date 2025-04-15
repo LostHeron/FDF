@@ -22,6 +22,7 @@
 # define ERROR_MLX -9
 # define ERROR_NB_ARGUMENTS -10
 # define ERROR_MAP_EXTENTION -11
+# define ERROR_EMPTY_MAP -12
 
 # define DEFAULT_WIDTH 2000 
 # define DEFAULT_HEIGHT 500

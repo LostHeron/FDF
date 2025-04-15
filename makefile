@@ -22,6 +22,7 @@ PARSING_FILES := parsing.c \
 
 PRINTING_DIR := src/printing/
 PRINTING_FILES := print_error.c \
+				  print_error_utils.c \
 
 GRAPHIC_DIR := src/graphic/
 GRAPHIC_FILES := graphic.c \
@@ -115,3 +116,6 @@ debug_fclean:
 debug_re:
 	$(MAKE) CFLAGS="$(CFLAGS) -g3" OBJ_DIR="$(OBJ_DIR_DEBUG)" re
 
+debugrun:
+	$(MAKE) debug
+	valgrind --track-fds=yes -s --leak-check=full ./fdf map/1.fdf

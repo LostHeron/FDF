@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 09:43:24 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 10:14:40 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 15:39:51 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	convert_points_coo(t_data *ptr_data)
 	{
 		x_i = 0;
 		val_x = (double)(((t_vector *)ptr_data->map.data)->size - 1) / 2;
-		while (x_i < ((t_vector *)ptr_data->map.data)->size)
+		while (x_i < ((t_vector *)ptr_data->map.data)[y_i].size)
 		{
 			((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].x = \
 				-val_x + x_i;

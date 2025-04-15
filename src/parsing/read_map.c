@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 15:46:57 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/10 17:10:56 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 16:35:19 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	read_map(t_data *ptr_data, char *filename)
 	return (ret);
 }
 
+/* fail get_next_line : checked ! */
+/* fail ft_vector_add_single : checked ! */
 static int	read_while(t_data *ptr_data, int fd, char *line, int *p_err_code)
 {
 	int	ret;

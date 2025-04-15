@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:50:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 11:00:28 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 15:57:04 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 static void	init_rot(t_data *ptr_data);
 static void	init_factor(t_data *ptr_data);
 static void	free_mlx(t_data *ptr_data);
+static int	no_event(void);
 
 int	graphic(t_data	*ptr_data)
 {
@@ -33,6 +34,7 @@ int	graphic(t_data	*ptr_data)
 	init_factor(ptr_data);
 	ptr_data->hook_func = &key_hook_no_shift;
 	clear_and_print(ptr_data);
+	mlx_loop_hook(ptr_data->ptr_mlx, &no_event, NULL);
 	mlx_hook(ptr_data->ptr_win, KeyRelease, KeyReleaseMask, \
 		&key_release, ptr_data);
 	mlx_hook(ptr_data->ptr_win, KeyPress, KeyPressMask, \
@@ -41,6 +43,11 @@ int	graphic(t_data	*ptr_data)
 		&mlx_loop_end, ptr_data->ptr_mlx);
 	mlx_loop(ptr_data->ptr_mlx);
 	free_mlx(ptr_data);
+	return (0);
+}
+
+static int	no_event(void)
+{
 	return (0);
 }
 
