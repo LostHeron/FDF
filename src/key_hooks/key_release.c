@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modify_height_factor.c                             :+:      :+:    :+:   */
+/*   key_release.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 14:30:24 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 18:20:46 by jweber           ###   ########.fr       */
+/*   Created: 2025/04/15 10:43:26 by jweber            #+#    #+#             */
+/*   Updated: 2025/04/15 11:37:56 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "ft_math.h"
+#include "key_hooks.h"
 
-void	modify_height_factor_down(t_data *ptr_data)
-{
-	if (ft_abs(ptr_data->height_factor) > 0.10001 )
-		ptr_data->height_factor -= 0.1;
-	else
-		ptr_data->height_factor -= 0.01;
-}
+#include <stdio.h>
 
-void	modify_height_factor_up(t_data *ptr_data)
+int	key_release(int keycode, t_data *ptr_data)
 {
-	if (ft_abs(ptr_data->height_factor) < 0.101)
-		ptr_data->height_factor += 0.01;
-	else
-		ptr_data->height_factor += 0.1;
+	printf("dans key_release\n");
+	if (keycode == SHIFT)
+	{
+		ptr_data->hook_func = &key_hook_no_shift;
+	}
+	return (0);
 }

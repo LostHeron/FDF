@@ -6,13 +6,14 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:50:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 18:39:38 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 11:00:28 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
 #include "graphic.h"
+#include "key_hooks.h"
 #define XK_LATIN1
 #include <X11/keysymdef.h>
 #include <X11/X.h>
@@ -30,8 +31,12 @@ int	graphic(t_data	*ptr_data)
 		return (ret);
 	init_rot(ptr_data);
 	init_factor(ptr_data);
+	ptr_data->hook_func = &key_hook_no_shift;
 	clear_and_print(ptr_data);
-	mlx_hook(ptr_data->ptr_win, 2, 1L << 0, &key_hooks, ptr_data);
+	mlx_hook(ptr_data->ptr_win, KeyRelease, KeyReleaseMask, \
+		&key_release, ptr_data);
+	mlx_hook(ptr_data->ptr_win, KeyPress, KeyPressMask, \
+		&key_press, ptr_data);
 	mlx_hook(ptr_data->ptr_win, DestroyNotify, NoEventMask, \
 		&mlx_loop_end, ptr_data->ptr_mlx);
 	mlx_loop(ptr_data->ptr_mlx);

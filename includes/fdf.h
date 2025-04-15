@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:35:49 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/14 18:52:08 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/15 10:42:57 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@
 # define DEF_H DEFAULT_HEIGHT
 
 # define ESC 65307
+# define SHIFT 65505
 
 # define PI 3.14159265358979323846
 # define PI_OVER_8 0.39269908169
+# define PI_OVER_16 0.19634954084 
 
 typedef struct s_point
 {
@@ -54,6 +56,7 @@ typedef struct s_data
 	void		*ptr_win;
 	void		*ptr_img;
 	char		*pixels_data;
+	int			(*hook_func)(int, struct s_data *);
 	double		rot_x[3][3];
 	double		angle_x;
 	double		rot_y[3][3];

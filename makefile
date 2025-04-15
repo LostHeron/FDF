@@ -26,22 +26,30 @@ PRINTING_FILES := print_error.c \
 GRAPHIC_DIR := src/graphic/
 GRAPHIC_FILES := graphic.c \
 				 init_mlx_data.c \
+				 set_rotations.c \
+				 get_scale_factor.c \
+				 calc_points.c \
 				 draw_line.c \
 				 draw_points.c \
 				 clear_image.c \
-				 key_hooks.c \
-				 set_rotations.c \
-				 modify_rot.c \
-				 modify_height_factor.c \
-				 modify_zoom_factor.c \
-				 calc_points.c \
 				 clear_and_print.c \
-				 get_scale_factor.c \
+
+KEY_HOOKS_DIR := src/key_hooks/
+KEY_HOOKS_FILES := key_press.c \
+				   key_release.c \
+				   key_hook_shift.c \
+				   key_hook_no_shift.c \
+				   modify_rot.c \
+				   modify_rot_neg.c \
+				   modify_height_factor.c \
+				   modify_zoom_factor.c \
+				   hooks_utils.c \
 
 C_FILES := fdf.c \
 		   $(addprefix $(GRAPHIC_DIR), $(GRAPHIC_FILES)) \
 		   $(addprefix $(PARSING_DIR), $(PARSING_FILES)) \
 		   $(addprefix $(PRINTING_DIR), $(PRINTING_FILES)) \
+		   $(addprefix $(KEY_HOOKS_DIR), $(KEY_HOOKS_FILES)) \
 
 OBJ_DIR_DEBUG := .obj_debug/
 OBJ_DIR := .obj/
@@ -66,7 +74,7 @@ $(NAME): $(OBJ_FILES) $(LIBFT) $(MINILIBX)
 
 -include $(D_FILES)
 
-$(OBJ_DIR)%.o:%.c | $(OBJ_DIR)$(GRAPHIC_DIR) $(OBJ_DIR)$(PARSING_DIR) $(OBJ_DIR)$(PRINTING_DIR)
+$(OBJ_DIR)%.o:%.c | $(OBJ_DIR)$(GRAPHIC_DIR) $(OBJ_DIR)$(PARSING_DIR) $(OBJ_DIR)$(PRINTING_DIR) $(OBJ_DIR)$(KEY_HOOKS_DIR)
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
 	
 $(OBJ_DIR)$(GRAPHIC_DIR):
@@ -76,6 +84,9 @@ $(OBJ_DIR)$(PARSING_DIR):
 	mkdir -p $@
 
 $(OBJ_DIR)$(PRINTING_DIR):
+	mkdir -p $@
+
+$(OBJ_DIR)$(KEY_HOOKS_DIR):
 	mkdir -p $@
 
 clean:
