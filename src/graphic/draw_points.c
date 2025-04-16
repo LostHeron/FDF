@@ -6,12 +6,12 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 17:01:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 15:42:45 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:37:25 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "graphic.h"
+#include "calculation.h"
 
 static void	call_draw_func(size_t x_i, size_t y_i, t_data *ptr_data);
 

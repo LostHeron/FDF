@@ -6,14 +6,14 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:50:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/16 10:43:12 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:37:49 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
-#include "graphic.h"
-#include "key_hooks.h"
+#include "calculation.h"
+#include "key_hooks_bonus.h"
 #define XK_LATIN1
 #include <X11/keysymdef.h>
 #include <X11/X.h>
@@ -24,7 +24,7 @@ static void	free_mlx(t_data *ptr_data);
 static int	no_event(void);
 
 /* check init_mlx_data fail : checked */
-int	graphic(t_data	*ptr_data)
+int	graphic_bonus(t_data *ptr_data)
 {
 	int	ret;
 

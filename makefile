@@ -67,7 +67,7 @@ C_FILES := fdf.c \
 		   $(addprefix $(GRAPHIC_DIR), $(GRAPHIC_FILES)) \
 		   $(addprefix $(KEY_HOOKS_DIR), $(KEY_HOOKS_FILES)) \
 
-C_FILES_BONUS := fdf.c \
+C_FILES_BONUS := fdf_bonus.c \
 		   		 $(addprefix $(PRINTING_DIR), $(PRINTING_FILES)) \
 		   		 $(addprefix $(PARSING_DIR), $(PARSING_FILES)) \
 				 $(addprefix $(GRAPHIC_DIR_BONUS), $(GRAPHIC_FILES_BONUS)) \
@@ -80,7 +80,7 @@ OBJ_FILES_BONUS := $(addprefix $(OBJ_DIR),$(C_FILES_BONUS:.c=.o))
 D_FILES := $(OBJ_FILES:.o=.d)
 D_FILES_BONUS := $(OBJ_FILES_BONUS:.o=.d)
 
-.PHONY: all git makelibft makeminilibx clean fclean re debug debug_clean debug_fclean debug_re
+.PHONY: all git makelibft makeminilibx clean fclean re bonus clean_bonus fclean_bonus re_bonus debug debug_clean debug_fclean debug_re
 
 all: makelibft makeminilibx $(NAME)
 
@@ -137,6 +137,20 @@ re:
 	$(MAKE) fclean
 	$(MAKE) all
 
+clean_bonus:
+	rm -rf $(OBJ_DIR)
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(MAKE) -C $(MINILIBX_DIR) clean
+
+fclean_bonus:
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(MAKE) clean
+	rm -rf $(NAME_BONUS)
+
+re_bonus:
+	$(MAKE) fclean_bonus
+	$(MAKE)	bonus 
+
 debug:
 	$(MAKE) CFLAGS="$(CFLAGS) -g3" OBJ_DIR="$(OBJ_DIR_DEBUG)" all
 
@@ -151,4 +165,21 @@ debug_re:
 
 debugrun:
 	$(MAKE) debug
-	valgrind --track-fds=yes -s --leak-check=full ./fdf map/1.fdf
+	valgrind --track-fds=yes -s --leak-check=full ./$(NAME) map/1.fdf
+
+
+debug_bonus:
+	$(MAKE) CFLAGS="$(CFLAGS) -g3" OBJ_DIR="$(OBJ_DIR_DEBUG)" bonus
+
+debug_clean_bonus:
+	$(MAKE) CFLAGS="$(CFLAGS) -g3" OBJ_DIR="$(OBJ_DIR_DEBUG)" clean_bonus
+
+debug_fclean_bonus:
+	$(MAKE) CFLAGS="$(CFLAGS) -g3" OBJ_DIR="$(OBJ_DIR_DEBUG)" fclean_bonus
+
+debug_re_bonus:
+	$(MAKE) CFLAGS="$(CFLAGS) -g3" OBJ_DIR="$(OBJ_DIR_DEBUG)" re_bonus
+
+debugrun_bonus:
+	$(MAKE) debug_bonus
+	valgrind --track-fds=yes -s --leak-check=full ./$(NAME_BONUS) map/1.fdf

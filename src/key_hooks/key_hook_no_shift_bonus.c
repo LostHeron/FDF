@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_hook_no_shift.c                                :+:      :+:    :+:   */
+/*   key_hook_no_shift_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:33:22 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 11:43:35 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:38:46 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "graphic.h"
+#include "calculation.h"
 #include "mlx.h"
-#include "key_hooks.h"
+#include "key_hooks_bonus.h"
 #define XK_MISCELLANY
 #include <X11/keysym.h>
 

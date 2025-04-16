@@ -6,13 +6,13 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:50:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/16 10:46:18 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:38:08 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "mlx.h"
-#include "graphic.h"
+#include "calculation.h"
 #include "key_hooks.h"
 #define XK_LATIN1
 #include <X11/keysymdef.h>

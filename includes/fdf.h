@@ -57,24 +57,22 @@ typedef struct s_data
 	void		*ptr_win;
 	void		*ptr_img;
 	char		*pixels_data;
+	int			bits_pp;
+	int			bytes_pl;
+	int			endian;
+	size_t		nb_pixels_tot;
 	int			(*hook_func)(int, struct s_data *);
-	double		rot_x[3][3];
 	double		angle_x;
-	double		rot_y[3][3];
+	double		rot_x[3][3];
 	double		angle_y;
-	double		rot_z[3][3];
+	double		rot_y[3][3];
 	double		angle_z;
+	double		rot_z[3][3];
 	double		zoom_factor;
 	double		height_factor;
 	double		default_scale_factor;
 	double		trans_x;
 	double		trans_y;
-	t_point		points_init[3][3];
-	t_point		points_calc[3][3];
-	size_t		nb_pixels_tot;
-	int			bits_pp;
-	int			bytes_pl;
-	int			endian;
 }			t_data;
 
 #endif

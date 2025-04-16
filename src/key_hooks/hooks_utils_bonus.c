@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_utils.c                                      :+:      :+:    :+:   */
+/*   hooks_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:27:43 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 11:49:25 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:38:42 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "graphic.h"
+#include "calculation.h"
+#include "key_hooks_bonus.h"
 #include <X11/keysym.h>
-#include "key_hooks.h"
 
 int	zooms(int keycode, t_data *ptr_data)
 {

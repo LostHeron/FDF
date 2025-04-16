@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modify_rot_neg.c                                   :+:      :+:    :+:   */
+/*   modify_rot_neg_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 10:35:52 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 10:39:54 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:39:17 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "graphic.h"
+#include "calculation.h"
 
 void	modify_rot_x_neg(t_data *ptr_data)
 {

@@ -117,11 +117,6 @@ static void	resize_points_calc(t_data *ptr_data)
 	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].y * \
 				ptr_data->default_scale_factor * \
 				ptr_data->zoom_factor + ptr_data->trans_y;
-			/*
-			((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z = \
-	((t_point *)((t_vector *)ptr_data->map_c.data)[y_i].data)[x_i].z * 40 * \
-				ptr_data->zoom_factor + 562;
-			*/
 		}
 	}
 }

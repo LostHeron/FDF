@@ -6,12 +6,12 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 15:58:23 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 18:13:49 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 14:37:21 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include "graphic.h"
+#include "calculation.h"
 #include "mlx.h"
 
 void	clear_and_print(t_data *ptr_data)

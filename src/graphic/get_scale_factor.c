@@ -73,14 +73,14 @@ static double	get_range_y(t_data *ptr_data)
 		x_i = -1;
 		while (++x_i < ((t_vector *)ptr_data->map.data)[y_i].size)
 		{
-			if (((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].x \
+			if (((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].y \
 			> max_y)
 				max_y = \
-				((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].x;
-			if (((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].x \
+				((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].y;
+			if (((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].y \
 			< min_y)
 				min_y = \
-				((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].x;
+				((t_point *)((t_vector *)ptr_data->map.data)[y_i].data)[x_i].y;
 		}
 	}
 	return (max_y - min_y);
