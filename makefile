@@ -65,7 +65,10 @@ debugrun:
 
 all: makelibft makeminilibx $(NAME)
 
-git:
+git_init:
+	git submodule update --init
+
+git_update:
 	git submodule update --init --remote --recursive
 
 makelibft:
