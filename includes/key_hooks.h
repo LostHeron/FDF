@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:46:53 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 11:48:46 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 10:42:51 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	modify_height_factor_up(t_data *ptr_data);
 int		key_hook_no_shift(int keycode, t_data *ptr_data);
 int		key_hook_shift(int keycode, t_data *ptr_data);
 int		key_press(int keycode, t_data *ptr_data);
+int		key_press_bonus(int keycode, t_data *ptr_data);
 int		key_release(int keycode, t_data *ptr_data);
 int		heights(int keycode, t_data *ptr_data);
 

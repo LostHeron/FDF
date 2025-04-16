@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   graphic.c                                          :+:      :+:    :+:   */
+/*   graphic_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:50:45 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/16 10:46:18 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/16 10:43:12 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,13 @@ int	graphic(t_data	*ptr_data)
 		return (ret);
 	init_rot(ptr_data);
 	init_factor(ptr_data);
+	ptr_data->hook_func = &key_hook_no_shift;
 	clear_and_print(ptr_data);
 	mlx_loop_hook(ptr_data->ptr_mlx, &no_event, NULL);
+	mlx_hook(ptr_data->ptr_win, KeyRelease, KeyReleaseMask, \
+		&key_release, ptr_data);
 	mlx_hook(ptr_data->ptr_win, KeyPress, KeyPressMask, \
-		&key_press, ptr_data);
+		&key_press_bonus, ptr_data);
 	mlx_hook(ptr_data->ptr_win, DestroyNotify, NoEventMask, \
 		&mlx_loop_end, ptr_data->ptr_mlx);
 	mlx_loop(ptr_data->ptr_mlx);

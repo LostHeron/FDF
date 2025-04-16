@@ -1,4 +1,5 @@
 NAME := fdf
+NAME_BONUS := fdf_bonus
 CC := cc
 CFLAGS := -Wall -Wextra -Werror -MMD -MP
 
@@ -37,33 +38,53 @@ GRAPHIC_FILES := graphic.c \
 
 KEY_HOOKS_DIR := src/key_hooks/
 KEY_HOOKS_FILES := key_press.c \
-				   key_release.c \
-				   key_hook_shift.c \
-				   key_hook_no_shift.c \
-				   modify_rot.c \
-				   modify_rot_neg.c \
-				   modify_height_factor.c \
-				   modify_zoom_factor.c \
-				   hooks_utils.c \
+
+GRAPHIC_DIR_BONUS := src/graphic/
+GRAPHIC_FILES_BONUS := graphic_bonus.c \
+					   init_mlx_data.c \
+				 	   set_rotations.c \
+				 	   get_scale_factor.c \
+				 	   calc_points.c \
+				 	   draw_line.c \
+				 	   draw_points.c \
+				 	   clear_image.c \
+				 	   clear_and_print.c \
+
+KEY_HOOKS_DIR_BONUS := src/key_hooks/
+KEY_HOOKS_FILES_BONUS := key_press_bonus.c \
+						 key_release_bonus.c \
+						 key_hook_shift_bonus.c \
+						 key_hook_no_shift_bonus.c \
+						 modify_rot_bonus.c \
+						 modify_rot_neg_bonus.c \
+						 modify_height_factor_bonus.c \
+						 modify_zoom_factor_bonus.c \
+						 hooks_utils_bonus.c \
 
 C_FILES := fdf.c \
-		   $(addprefix $(GRAPHIC_DIR), $(GRAPHIC_FILES)) \
-		   $(addprefix $(PARSING_DIR), $(PARSING_FILES)) \
 		   $(addprefix $(PRINTING_DIR), $(PRINTING_FILES)) \
+		   $(addprefix $(PARSING_DIR), $(PARSING_FILES)) \
+		   $(addprefix $(GRAPHIC_DIR), $(GRAPHIC_FILES)) \
 		   $(addprefix $(KEY_HOOKS_DIR), $(KEY_HOOKS_FILES)) \
+
+C_FILES_BONUS := fdf.c \
+		   		 $(addprefix $(PRINTING_DIR), $(PRINTING_FILES)) \
+		   		 $(addprefix $(PARSING_DIR), $(PARSING_FILES)) \
+				 $(addprefix $(GRAPHIC_DIR_BONUS), $(GRAPHIC_FILES_BONUS)) \
+		   		 $(addprefix $(KEY_HOOKS_DIR_BONUS), $(KEY_HOOKS_FILES_BONUS)) \
 
 OBJ_DIR_DEBUG := .obj_debug/
 OBJ_DIR := .obj/
 OBJ_FILES := $(addprefix $(OBJ_DIR),$(C_FILES:.c=.o))
+OBJ_FILES_BONUS := $(addprefix $(OBJ_DIR),$(C_FILES_BONUS:.c=.o))
 D_FILES := $(OBJ_FILES:.o=.d)
+D_FILES_BONUS := $(OBJ_FILES_BONUS:.o=.d)
 
 .PHONY: all git makelibft makeminilibx clean fclean re debug debug_clean debug_fclean debug_re
 
-debugrun:
-	$(MAKE) debug
-	valgrind --track-fds=yes -s --leak-check=full ./fdf map/1.fdf
-
 all: makelibft makeminilibx $(NAME)
+
+bonus: makelibft makeminilibx $(NAME_BONUS)
 
 git_init:
 	git submodule update --init
@@ -80,7 +101,12 @@ makeminilibx:
 $(NAME): $(OBJ_FILES) $(LIBFT) $(MINILIBX)
 	$(CC) $(CFLAGS) $(INCLUDES) $(LIBRARIES) $^ -o $@
 
+
+$(NAME_BONUS): $(OBJ_FILES_BONUS) $(LIBFT) $(MINILIBX)
+	$(CC) $(CFLAGS) $(INCLUDES) $(LIBRARIES) $^ -o $@
+
 -include $(D_FILES)
+-include $(D_FILES_BONUS)
 
 $(OBJ_DIR)%.o:%.c | $(OBJ_DIR)$(GRAPHIC_DIR) $(OBJ_DIR)$(PARSING_DIR) $(OBJ_DIR)$(PRINTING_DIR) $(OBJ_DIR)$(KEY_HOOKS_DIR)
 	$(CC) -c $(CFLAGS) $(INCLUDES) $< -o $@
@@ -123,3 +149,6 @@ debug_fclean:
 debug_re:
 	$(MAKE) CFLAGS="$(CFLAGS) -g3" OBJ_DIR="$(OBJ_DIR_DEBUG)" re
 
+debugrun:
+	$(MAKE) debug
+	valgrind --track-fds=yes -s --leak-check=full ./fdf map/1.fdf
