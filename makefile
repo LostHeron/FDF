@@ -80,7 +80,7 @@ OBJ_FILES_BONUS := $(addprefix $(OBJ_DIR),$(C_FILES_BONUS:.c=.o))
 D_FILES := $(OBJ_FILES:.o=.d)
 D_FILES_BONUS := $(OBJ_FILES_BONUS:.o=.d)
 
-.PHONY: all git makelibft makeminilibx clean fclean re bonus clean_bonus fclean_bonus re_bonus debug debug_clean debug_fclean debug_re
+.PHONY: all git makelibft makeminilibx clean fclean re bonus clean_bonus fclean_bonus re_bonus debug debug_clean debug_fclean debug_re debug_bonus debug_clean_bonus debug_fclean_bonus debug_re_bonus
 
 all: makelibft makeminilibx $(NAME)
 
