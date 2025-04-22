@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modify_height_factor_bonus.c                       :+:      :+:    :+:   */
+/*   print_mat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/14 14:30:24 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/16 14:23:54 by jweber           ###   ########.fr       */
+/*   Created: 2025/04/18 14:18:24 by jweber            #+#    #+#             */
+/*   Updated: 2025/04/18 14:18:43 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
-#include "ft_math.h"
+#include <stdio.h>
 
-void	modify_height_factor_down(t_data *ptr_data)
+void	print_mat(double mat[3][3])
 {
-	if (ft_abs(ptr_data->height_factor) > 0.10001)
-		ptr_data->height_factor -= 0.1;
-	else
-		ptr_data->height_factor -= 0.01;
-}
+	size_t	i;
+	size_t	j;
 
-void	modify_height_factor_up(t_data *ptr_data)
-{
-	if (ft_abs(ptr_data->height_factor) < 0.101)
-		ptr_data->height_factor += 0.01;
-	else
-		ptr_data->height_factor += 0.1;
+	i = 0;
+	while (i < 3)
+	{
+		j = 0;
+		while (j < 3)
+		{
+			printf("%f, ", mat[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+	return ;
 }

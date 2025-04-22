@@ -1,3 +1,6 @@
+42.fdf
+*.log
+log
 map/
 .gdb_history
 .obj/

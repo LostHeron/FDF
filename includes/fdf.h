@@ -6,7 +6,7 @@
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 14:35:49 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/15 18:34:42 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/17 13:32:54 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,32 @@ typedef struct s_point
 
 typedef t_point	t_pt;
 
+typedef struct s_axis
+{
+	t_point		pt_origin_init;
+	t_point		pt_axis_x_init;
+	t_point		pt_axis_y_init;
+	t_point		pt_axis_z_init;
+	t_point		pt_origin;
+	t_point		pt_axis_x;
+	t_point		pt_axis_y;
+	t_point		pt_axis_z;
+}			t_axis;
+
+typedef struct s_cols
+{
+	unsigned char b;
+	unsigned char g;
+	unsigned char r;
+	unsigned char trans;
+} t_cols;
+
+typedef union u_col
+{
+	int		all_col;
+	t_cols	each_cols;
+}			t_col;
+
 /*
  * bits_pp -> bits per pixel
  * bytes_pl -> bytes per lines
@@ -62,17 +88,24 @@ typedef struct s_data
 	int			endian;
 	size_t		nb_pixels_tot;
 	int			(*hook_func)(int, struct s_data *);
+	double		delta_x;
 	double		angle_x;
 	double		rot_x[3][3];
+	double		delta_y;
 	double		angle_y;
 	double		rot_y[3][3];
 	double		angle_z;
+	double		delta_z;
 	double		rot_z[3][3];
+	double		rot_mat[3][3];
+	t_axis		axis;
 	double		zoom_factor;
 	double		height_factor;
 	double		default_scale_factor;
 	double		trans_x;
 	double		trans_y;
+	t_col		white;
+	t_col		red;
 }			t_data;
 
 #endif

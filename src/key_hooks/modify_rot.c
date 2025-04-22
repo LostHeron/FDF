@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   modify_rot_bonus.c                                 :+:      :+:    :+:   */
+/*   modify_rot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 18:49:08 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/16 14:39:12 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/21 10:48:48 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	modify_rot_x(t_data *ptr_data)
 	if (ptr_data->angle_x > 2 * PI)
 		ptr_data->angle_x -= 2 * PI;
 	set_rot_x(ptr_data);
+	set_rot_mat(ptr_data);
 }
 
 void	modify_rot_y(t_data *ptr_data)
@@ -27,6 +28,7 @@ void	modify_rot_y(t_data *ptr_data)
 	if (ptr_data->angle_y > 2 * PI)
 		ptr_data->angle_y -= 2 * PI;
 	set_rot_y(ptr_data);
+	set_rot_mat(ptr_data);
 }
 
 void	modify_rot_z(t_data *ptr_data)
@@ -35,4 +37,5 @@ void	modify_rot_z(t_data *ptr_data)
 	if (ptr_data->angle_z > 2 * PI)
 		ptr_data->angle_z -= 2 * PI;
 	set_rot_z(ptr_data);
+	set_rot_mat(ptr_data);
 }

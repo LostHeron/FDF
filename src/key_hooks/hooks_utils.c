@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooks_utils_bonus.c                                :+:      :+:    :+:   */
+/*   hooks_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jweber <jweber@student.42Lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/15 11:27:43 by jweber            #+#    #+#             */
-/*   Updated: 2025/04/16 14:38:42 by jweber           ###   ########.fr       */
+/*   Updated: 2025/04/21 10:48:13 by jweber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 #include "calculation.h"
-#include "key_hooks_bonus.h"
+#include "key_hooks.h"
 #include <X11/keysym.h>
 
 int	zooms(int keycode, t_data *ptr_data)
@@ -77,3 +77,9 @@ int	heights(int keycode, t_data *ptr_data)
 	}
 	return (1);
 }
+
+/*
+int	draw_axis(int key_code, t_data *ptr_data)
+{
+}
+*/
